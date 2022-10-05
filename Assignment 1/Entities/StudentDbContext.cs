@@ -20,43 +20,43 @@ namespace Assignment_1.Entities
             modelbuilder.Entity<Student>().HasData(
                 new Student()
                 {
-                    Id = 1,
+                    StudentID = 1,
                     FirstName = "Bart",
                     LastName = "Simpson",
                     DateOfBirth = new DateTime(1971, 05, 31),
                     GPA = 2.7,
-                    ProgramId = "CPA"
+                    ProgramID = "CPA",
                 },
                 new Student()
                 {
-                    Id = 2,
+                    StudentID = 2,
                     FirstName = "Lisa",
                     LastName = "Simpson",
                     DateOfBirth = new DateTime(1973, 08, 05),
                     GPA = 4.0,
-                    ProgramId = "BACS"
+                    ProgramID = "BACS"
                 });
 
             modelbuilder.Entity<SchoolProgram>().HasData(
                 new SchoolProgram()
                 {
-                    ProgramId = "CP",
-                    ProgramName = "Computer Programmer"
+                    ProgramID = "CP",
+                    Name = "Computer Programmer"
                 },
                 new SchoolProgram()
                 {
-                    ProgramId = "CPA",
-                    ProgramName = "Computer Programmer Analyst"
+                    ProgramID = "CPA",
+                    Name = "Computer Programmer Analyst"
                 },
                 new SchoolProgram()
                 {
-                    ProgramId = "BACS",
-                    ProgramName = "Bachelor of Applied Computer Science"
+                    ProgramID = "BACS",
+                    Name = "Bachelor of Applied Computer Science"
                 },
                 new SchoolProgram()
                 {
-                    ProgramId = "ITID",
-                    ProgramName = "IT Innovation and Design"
+                    ProgramID = "ITID",
+                    Name = "IT Innovation and Design"
                 });
         }
     }

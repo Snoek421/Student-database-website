@@ -23,32 +23,32 @@ namespace Assignment_1.Controllers
         [HttpGet()]
         public async Task<IActionResult> Edit(int id)
         {
-            //StudentViewModel studentViewModel = new StudentViewModel()
-            //{
-            //    Programs = await _studentDbContext.Programs.OrderBy(p => p.ProgramName).ToListAsync(),
-            //    ActiveStudent = await _studentDbContext.Students.FindAsync(id)
-            //};
-            var student = await _studentDbContext.Students.FindAsync(id);
+            StudentViewModel studentViewModel = new StudentViewModel()
+            {
+                Programs = await _studentDbContext.Programs.OrderBy(p => p.Name).ToListAsync(),
+                ActiveStudent = await _studentDbContext.Students.FindAsync(id)
+            };
+            //var student = await _studentDbContext.Students.FindAsync(id);
 
-            return View(student);
+            return View(studentViewModel);
         }
 
 
         [HttpPost()]
-        public async Task<IActionResult> Edit(Student student)
+        public async Task<IActionResult> Edit(StudentViewModel studentViewModel)
         {
             if (ModelState.IsValid)
             {
-                student.GetAge();
-                student.GetGPAScale();
-                _studentDbContext.Students.Update(student);
+                //studentViewModel.ActiveStudent.GetAge();
+                //studentViewModel.ActiveStudent.GetGPAScale();
+                _studentDbContext.Students.Update(studentViewModel.ActiveStudent);
                 await _studentDbContext.SaveChangesAsync();
                 return RedirectToAction("List", "Students");
             }
             else
             {
                 //studentViewModel.Programs = await _studentDbContext.Programs.OrderBy(p => p.ProgramName).ToListAsync();
-                return View(student);
+                return View(studentViewModel);
             }
         }
 

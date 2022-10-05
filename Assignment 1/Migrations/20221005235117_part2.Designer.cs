@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment_1.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20221005150235_part2")]
+    [Migration("20221005235117_part2")]
     partial class part2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,47 +26,47 @@ namespace Assignment_1.Migrations
 
             modelBuilder.Entity("Assignment_1.Entities.SchoolProgram", b =>
                 {
-                    b.Property<string>("ProgramId")
+                    b.Property<string>("ProgramID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProgramName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProgramId");
+                    b.HasKey("ProgramID");
 
                     b.ToTable("Programs");
 
                     b.HasData(
                         new
                         {
-                            ProgramId = "CP",
-                            ProgramName = "Computer Programmer"
+                            ProgramID = "CP",
+                            Name = "Computer Programmer"
                         },
                         new
                         {
-                            ProgramId = "CPA",
-                            ProgramName = "Computer Programmer Analyst"
+                            ProgramID = "CPA",
+                            Name = "Computer Programmer Analyst"
                         },
                         new
                         {
-                            ProgramId = "BACS",
-                            ProgramName = "Bachelor of Applied Computer Science"
+                            ProgramID = "BACS",
+                            Name = "Bachelor of Applied Computer Science"
                         },
                         new
                         {
-                            ProgramId = "ITID",
-                            ProgramName = "IT Innovation and Design"
+                            ProgramID = "ITID",
+                            Name = "IT Innovation and Design"
                         });
                 });
 
             modelBuilder.Entity("Assignment_1.Entities.Student", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentID"), 1L, 1);
 
                     b.Property<int?>("Age")
                         .HasColumnType("int");
@@ -89,39 +89,37 @@ namespace Assignment_1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProgramId")
+                    b.Property<string>("ProgramID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SchoolProgramProgramId")
+                    b.Property<string>("SchoolProgramProgramID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StudentID");
 
-                    b.HasIndex("SchoolProgramProgramId");
+                    b.HasIndex("SchoolProgramProgramID");
 
                     b.ToTable("Students");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            StudentID = 1,
                             DateOfBirth = new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bart",
                             GPA = 2.7000000000000002,
-                            GpaScale = "",
                             LastName = "Simpson",
-                            ProgramId = "CPA"
+                            ProgramID = "CPA"
                         },
                         new
                         {
-                            Id = 2,
+                            StudentID = 2,
                             DateOfBirth = new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Lisa",
                             GPA = 4.0,
-                            GpaScale = "",
                             LastName = "Simpson",
-                            ProgramId = "BACS"
+                            ProgramID = "BACS"
                         });
                 });
 
@@ -129,7 +127,7 @@ namespace Assignment_1.Migrations
                 {
                     b.HasOne("Assignment_1.Entities.SchoolProgram", "SchoolProgram")
                         .WithMany()
-                        .HasForeignKey("SchoolProgramProgramId");
+                        .HasForeignKey("SchoolProgramProgramID");
 
                     b.Navigation("SchoolProgram");
                 });

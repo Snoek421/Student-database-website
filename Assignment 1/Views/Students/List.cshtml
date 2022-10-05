@@ -26,11 +26,11 @@
                 <td>@Student.Age</td>
                 <td>@Student.GPA.ToString()</td>
                 <td>@Student.GpaScale</td>
-                <td>@Student.SchoolProgram?.ProgramName</td>
+                <td>@Student.SchoolProgram?.Name</td>
                 <td>
-                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@Student.Id">Edit</a>
+                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@Student.StudentID">Edit</a>
                     <span class="mx-1">|</span>
-                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@Student.Id">Delete</a>
+                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@Student.StudentID">Delete</a>
                 </td>
             </tr>
         }
