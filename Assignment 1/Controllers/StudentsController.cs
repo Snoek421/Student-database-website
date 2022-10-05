@@ -19,19 +19,19 @@ namespace Assignment_1.Controllers
         public async Task<IActionResult> List()
         {
 
-            foreach (Student student in _studentDbContext.Students)
-            {
-                if (student.Age == null)
-                {
-                student.GetAge();
-                }
-                if (student.GpaScale == "")
-                {
-                student.GetGPAScale();
-                }
+            //foreach (Student student in _studentDbContext.Students)
+            //{
+            //    if (student.Age == null)
+            //    {
+            //    student.GetAge();
+            //    }
+            //    if (student.GpaScale == "")
+            //    {
+            //    student.GetGPAScale();
+            //    }
 
-                _studentDbContext.Students.Update(student);
-            }
+            //    _studentDbContext.Students.Update(student);
+            //}
             await _studentDbContext.SaveChangesAsync();
             var allStudents =  await _studentDbContext.Students./*Include(m => m.Program).*/OrderBy(m => m.FirstName).ToListAsync();
             return View(allStudents);

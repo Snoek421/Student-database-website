@@ -23,6 +23,10 @@ namespace Assignment_1.Entities
 
         public int? Age { get; private set; }
 
+        [Required(ErrorMessage = "Please select a Program.")]
+        public string? ProgramId { get; set; }
+        public SchoolProgram? SchoolProgram { get; set; }
+
 
         public Student()
         {
@@ -57,8 +61,8 @@ namespace Assignment_1.Entities
         public void GetAge()
         {
             DateTime today = DateTime.Today;
-            int age = today.Year - DateOfBirth.Year;
-            if (today.Month < DateOfBirth.Month)
+            int age = today.Year - this.DateOfBirth.Year;
+            if (today.Month < this.DateOfBirth.Month)
             {
                 age--;
             }
