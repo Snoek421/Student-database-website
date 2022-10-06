@@ -25,7 +25,7 @@ namespace Assignment_1.Controllers
         {
             StudentViewModel studentViewModel = new StudentViewModel()
             {
-                Programs = await _studentDbContext.Programs.OrderBy(p => p.Name).ToListAsync(),
+                Programs = await _studentDbContext.Programs.OrderBy(p => p.SchoolProgramName).ToListAsync(),
                 ActiveStudent = await _studentDbContext.Students.FindAsync(id)
             };
             //var student = await _studentDbContext.Students.FindAsync(id);

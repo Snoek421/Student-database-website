@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment_1.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20221005235117_part2")]
+    [Migration("20221006010431_part2")]
     partial class part2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,37 +26,37 @@ namespace Assignment_1.Migrations
 
             modelBuilder.Entity("Assignment_1.Entities.SchoolProgram", b =>
                 {
-                    b.Property<string>("ProgramID")
+                    b.Property<string>("SchoolProgramID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("SchoolProgramName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProgramID");
+                    b.HasKey("SchoolProgramID");
 
                     b.ToTable("Programs");
 
                     b.HasData(
                         new
                         {
-                            ProgramID = "CP",
-                            Name = "Computer Programmer"
+                            SchoolProgramID = "CP",
+                            SchoolProgramName = "Computer Programmer"
                         },
                         new
                         {
-                            ProgramID = "CPA",
-                            Name = "Computer Programmer Analyst"
+                            SchoolProgramID = "CPA",
+                            SchoolProgramName = "Computer Programmer Analyst"
                         },
                         new
                         {
-                            ProgramID = "BACS",
-                            Name = "Bachelor of Applied Computer Science"
+                            SchoolProgramID = "BACS",
+                            SchoolProgramName = "Bachelor of Applied Computer Science"
                         },
                         new
                         {
-                            ProgramID = "ITID",
-                            Name = "IT Innovation and Design"
+                            SchoolProgramID = "ITID",
+                            SchoolProgramName = "IT Innovation and Design"
                         });
                 });
 
@@ -89,16 +89,13 @@ namespace Assignment_1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProgramID")
+                    b.Property<string>("SchoolProgramID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SchoolProgramProgramID")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("StudentID");
 
-                    b.HasIndex("SchoolProgramProgramID");
+                    b.HasIndex("SchoolProgramID");
 
                     b.ToTable("Students");
 
@@ -110,7 +107,7 @@ namespace Assignment_1.Migrations
                             FirstName = "Bart",
                             GPA = 2.7000000000000002,
                             LastName = "Simpson",
-                            ProgramID = "CPA"
+                            SchoolProgramID = "CPA"
                         },
                         new
                         {
@@ -119,7 +116,7 @@ namespace Assignment_1.Migrations
                             FirstName = "Lisa",
                             GPA = 4.0,
                             LastName = "Simpson",
-                            ProgramID = "BACS"
+                            SchoolProgramID = "BACS"
                         });
                 });
 
@@ -127,7 +124,9 @@ namespace Assignment_1.Migrations
                 {
                     b.HasOne("Assignment_1.Entities.SchoolProgram", "SchoolProgram")
                         .WithMany()
-                        .HasForeignKey("SchoolProgramProgramID");
+                        .HasForeignKey("SchoolProgramID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("SchoolProgram");
                 });

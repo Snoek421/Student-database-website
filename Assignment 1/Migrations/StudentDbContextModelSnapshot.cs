@@ -22,42 +22,6 @@ namespace Assignment_1.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Assignment_1.Entities.SchoolProgram", b =>
-                {
-                    b.Property<string>("ProgramID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProgramID");
-
-                    b.ToTable("Programs");
-
-                    b.HasData(
-                        new
-                        {
-                            ProgramID = "CP",
-                            Name = "Computer Programmer"
-                        },
-                        new
-                        {
-                            ProgramID = "CPA",
-                            Name = "Computer Programmer Analyst"
-                        },
-                        new
-                        {
-                            ProgramID = "BACS",
-                            Name = "Bachelor of Applied Computer Science"
-                        },
-                        new
-                        {
-                            ProgramID = "ITID",
-                            Name = "IT Innovation and Design"
-                        });
-                });
-
             modelBuilder.Entity("Assignment_1.Entities.Student", b =>
                 {
                     b.Property<int>("StudentID")
@@ -87,16 +51,7 @@ namespace Assignment_1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProgramID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SchoolProgramProgramID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("StudentID");
-
-                    b.HasIndex("SchoolProgramProgramID");
 
                     b.ToTable("Students");
 
@@ -107,8 +62,7 @@ namespace Assignment_1.Migrations
                             DateOfBirth = new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bart",
                             GPA = 2.7000000000000002,
-                            LastName = "Simpson",
-                            ProgramID = "CPA"
+                            LastName = "Simpson"
                         },
                         new
                         {
@@ -116,18 +70,8 @@ namespace Assignment_1.Migrations
                             DateOfBirth = new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Lisa",
                             GPA = 4.0,
-                            LastName = "Simpson",
-                            ProgramID = "BACS"
+                            LastName = "Simpson"
                         });
-                });
-
-            modelBuilder.Entity("Assignment_1.Entities.Student", b =>
-                {
-                    b.HasOne("Assignment_1.Entities.SchoolProgram", "SchoolProgram")
-                        .WithMany()
-                        .HasForeignKey("SchoolProgramProgramID");
-
-                    b.Navigation("SchoolProgram");
                 });
 #pragma warning restore 612, 618
         }

@@ -42,7 +42,7 @@ namespace Assignment_1.Controllers
         {
             StudentViewModel studentViewModel = new StudentViewModel()
             {
-                Programs = await _studentDbContext.Programs.OrderBy(p => p.Name).ToListAsync(),
+                Programs = await _studentDbContext.Programs.OrderBy(p => p.SchoolProgramName).ToListAsync(),
                 ActiveStudent = new Student()
             };
             return View(new Student());
@@ -60,7 +60,7 @@ namespace Assignment_1.Controllers
             }
             else // if it is invalid then just return the create view again
             {
-                studentViewModel.Programs =  await _studentDbContext.Programs.OrderBy(p => p.Name).ToListAsync();
+                studentViewModel.Programs =  await _studentDbContext.Programs.OrderBy(p => p.SchoolProgramName).ToListAsync();
                 return View(studentViewModel);
             }
         }

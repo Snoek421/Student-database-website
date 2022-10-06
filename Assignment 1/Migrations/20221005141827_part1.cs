@@ -13,7 +13,7 @@ namespace Assignment_1.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    StudentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -24,17 +24,17 @@ namespace Assignment_1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.StudentID);
                 });
 
             migrationBuilder.InsertData(
                 table: "Students",
-                columns: new[] { "Id", "Age", "DateOfBirth", "FirstName", "GPA", "GpaScale", "LastName" },
+                columns: new[] { "StudentID", "Age", "DateOfBirth", "FirstName", "GPA", "GpaScale", "LastName" },
                 values: new object[] { 1, null, new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bart", 2.7000000000000002, "", "Simpson" });
 
             migrationBuilder.InsertData(
                 table: "Students",
-                columns: new[] { "Id", "Age", "DateOfBirth", "FirstName", "GPA", "GpaScale", "LastName" },
+                columns: new[] { "StudentID", "Age", "DateOfBirth", "FirstName", "GPA", "GpaScale", "LastName" },
                 values: new object[] { 2, null, new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lisa", 4.0, "", "Simpson" });
         }
 

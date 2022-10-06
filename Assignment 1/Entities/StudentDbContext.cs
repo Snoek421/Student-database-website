@@ -25,7 +25,7 @@ namespace Assignment_1.Entities
                     LastName = "Simpson",
                     DateOfBirth = new DateTime(1971, 05, 31),
                     GPA = 2.7,
-                    ProgramID = "CPA",
+                    SchoolProgramID = "CPA",
                 },
                 new Student()
                 {
@@ -34,29 +34,29 @@ namespace Assignment_1.Entities
                     LastName = "Simpson",
                     DateOfBirth = new DateTime(1973, 08, 05),
                     GPA = 4.0,
-                    ProgramID = "BACS"
+                    SchoolProgramID = "BACS"
                 });
 
             modelbuilder.Entity<SchoolProgram>().HasData(
                 new SchoolProgram()
                 {
-                    ProgramID = "CP",
-                    Name = "Computer Programmer"
+                    SchoolProgramID = "CP",
+                    SchoolProgramName = "Computer Programmer"
                 },
                 new SchoolProgram()
                 {
-                    ProgramID = "CPA",
-                    Name = "Computer Programmer Analyst"
+                    SchoolProgramID = "CPA",
+                    SchoolProgramName = "Computer Programmer Analyst"
                 },
                 new SchoolProgram()
                 {
-                    ProgramID = "BACS",
-                    Name = "Bachelor of Applied Computer Science"
+                    SchoolProgramID = "BACS",
+                    SchoolProgramName = "Bachelor of Applied Computer Science"
                 },
                 new SchoolProgram()
                 {
-                    ProgramID = "ITID",
-                    Name = "IT Innovation and Design"
+                    SchoolProgramID = "ITID",
+                    SchoolProgramName = "IT Innovation and Design"
                 });
         }
     }

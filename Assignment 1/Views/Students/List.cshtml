@@ -26,7 +26,7 @@
                 <td>@Student.Age</td>
                 <td>@Student.GPA.ToString()</td>
                 <td>@Student.GpaScale</td>
-                <td>@Student.SchoolProgram?.Name</td>
+                <td>@Student.SchoolProgram?.SchoolProgramName</td>
                 <td>
                     <a asp-controller="Student" asp-action="Edit" asp-route-id="@Student.StudentID">Edit</a>
                     <span class="mx-1">|</span>

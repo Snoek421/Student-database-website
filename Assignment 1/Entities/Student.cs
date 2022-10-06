@@ -28,25 +28,25 @@ namespace Assignment_1.Entities
             {
                 if (this.GPA >= 4.0)
                 {
-                    GpaScale = "Excellent";
+                    gpaScale = "Excellent";
                 }
                 else if (this.GPA >= 3.5 && this.GPA < 4.0)
                 {
-                    GpaScale = "Very Good";
+                    gpaScale = "Very Good";
                 }
                 else if (this.GPA >= 3.0 && this.GPA < 3.5)
                 {
-                    GpaScale = "Good";
+                    gpaScale = "Good";
                 }
                 else if (this.GPA >= 2.5 && this.GPA < 3.0)
                 {
-                    GpaScale = "Satisfactory";
+                    gpaScale = "Satisfactory";
                 }
                 else if (this.GPA >= 0.0 && this.GPA < 2.5)
                 {
-                    GpaScale = "Unsatisfactory";
+                    gpaScale = "Unsatisfactory";
                 }
-                return GpaScale;
+                return gpaScale;
             }
             private set { }
         }
@@ -71,7 +71,7 @@ namespace Assignment_1.Entities
 
 
         [Required(ErrorMessage = "Please select a Program.")]
-        public string? ProgramID { get; set; }
+        public string? SchoolProgramID { get; set; }
 
         public SchoolProgram? SchoolProgram { get; set; }
 
