@@ -103,21 +103,25 @@ namespace Assignment_1.Migrations
                         new
                         {
                             StudentID = 1,
+                            Age = 51,
                             DateOfBirth = new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bart",
                             GPA = 2.7000000000000002,
+                            GpaScale = "Satisfactory",
                             LastName = "Simpson",
                             SchoolProgramID = "CPA"
                         },
                         new
                         {
                             StudentID = 2,
+                            Age = 49,
                             DateOfBirth = new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Lisa",
                             GPA = 4.0,
+                            GpaScale = "Excellent",
                             LastName = "Simpson",
                             SchoolProgramID = "BACS"
-                        });
+                        }); ;
                 });
 
             modelBuilder.Entity("Assignment_1.Entities.Student", b =>

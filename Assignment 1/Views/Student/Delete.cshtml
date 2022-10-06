@@ -1,11 +1,11 @@
-﻿@model Assignment_1.Entities.Student
+﻿@model Student
 
 @{
     ViewData["Title"] = "Delete";
 }
 
 <h1>Confirm Deletion</h1>
-<h3>Are you sure you want to delete this?</h3>
+<h3>@Model.FirstName @Model.LastName (@Model.Age)</h3>
 
  <form asp-controller="Student" asp-action="DeleteConfirmed" method="post">
     <input type="hidden" asp-for="StudentID" />

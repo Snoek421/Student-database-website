@@ -30,12 +30,12 @@ namespace Assignment_1.Migrations
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "StudentID", "Age", "DateOfBirth", "FirstName", "GPA", "GpaScale", "LastName" },
-                values: new object[] { 1, null, new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bart", 2.7000000000000002, "", "Simpson" });
+                values: new object[] { 1, 51, new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bart", 2.7000000000000002, "Satisfactory", "Simpson" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "StudentID", "Age", "DateOfBirth", "FirstName", "GPA", "GpaScale", "LastName" },
-                values: new object[] { 2, null, new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lisa", 4.0, "", "Simpson" });
+                values: new object[] { 2, 49, new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lisa", 4.0, "Excellent", "Simpson" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

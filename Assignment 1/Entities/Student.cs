@@ -8,17 +8,17 @@ namespace Assignment_1.Entities
 
         public int StudentID { get; set; }
 
-        [Required(ErrorMessage = "Please enter a first name.")]
+        [Required(ErrorMessage = "Please enter a first name")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Please enter a last name.")]
+        [Required(ErrorMessage = "Please enter a last name")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Please choose a date of birth.")]
+        [Required(ErrorMessage = "Please choose a date of birth")]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Please input a valid GPA.")]
-        [Range(0.0, 4.0, ErrorMessage = "GPA must be between 0.0 and 4.0.")]
+        [Required(ErrorMessage = "Please input a valid GPA")]
+        [Range(0.0, 4.0, ErrorMessage = "GPA must be between 0.0 and 4.0")]
         public double? GPA { get; set; }
 
         private string? gpaScale;
@@ -70,12 +70,45 @@ namespace Assignment_1.Entities
         }
 
 
-        [Required(ErrorMessage = "Please select a Program.")]
+        [Required(ErrorMessage = "Please add a program of study")]
         public string? SchoolProgramID { get; set; }
 
         public SchoolProgram? SchoolProgram { get; set; }
 
+        public void GetGpaScale()
+        {
+            if (this.GPA >= 4.0)
+            {
+                gpaScale = "Excellent";
+            }
+            else if (this.GPA >= 3.5 && this.GPA < 4.0)
+            {
+                gpaScale = "Very Good";
+            }
+            else if (this.GPA >= 3.0 && this.GPA < 3.5)
+            {
+                gpaScale = "Good";
+            }
+            else if (this.GPA >= 2.5 && this.GPA < 3.0)
+            {
+                gpaScale = "Satisfactory";
+            }
+            else if (this.GPA >= 0.0 && this.GPA < 2.5)
+            {
+                gpaScale = "Unsatisfactory";
+            }
+        }
 
+        public void GetAge()
+        {
+            DateTime today = DateTime.Today;
+            int calculatedAge = today.Year - this.DateOfBirth.Year;
+            if (today.Month < this.DateOfBirth.Month)
+            {
+                calculatedAge--;
+            }
+            age = calculatedAge;
+        }
     }
 
 }

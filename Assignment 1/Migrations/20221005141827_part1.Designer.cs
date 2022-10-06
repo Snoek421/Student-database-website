@@ -26,7 +26,7 @@ namespace Assignment_1.Migrations
 
             modelBuilder.Entity("Assignment_1.Entities.Student", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -53,27 +53,29 @@ namespace Assignment_1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StudentID");
 
                     b.ToTable("Students");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            StudentID = 1,
+                            Age = 51,
                             DateOfBirth = new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bart",
                             GPA = 2.7000000000000002,
-                            GpaScale = "",
+                            GpaScale = "Satisfactory",
                             LastName = "Simpson"
                         },
                         new
                         {
-                            Id = 2,
+                            StudentID = 2,
+                            Age = 49,
                             DateOfBirth = new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Lisa",
                             GPA = 4.0,
-                            GpaScale = "",
+                            GpaScale = "Excellent",
                             LastName = "Simpson"
                         });
                 });

@@ -18,21 +18,6 @@ namespace Assignment_1.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-
-            //foreach (Student student in _studentDbContext.Students)
-            //{
-            //    if (student.Age == null)
-            //    {
-            //    student.GetAge();
-            //    }
-            //    if (student.GpaScale == "")
-            //    {
-            //    student.GetGPAScale();
-            //    }
-
-            //    _studentDbContext.Students.Update(student);
-            //}
-            //await _studentDbContext.SaveChangesAsync();
             var allStudents = await _studentDbContext.Students.Include(m => m.SchoolProgram).OrderBy(m => m.FirstName).ToListAsync();
             return View(allStudents);
         }
@@ -45,7 +30,7 @@ namespace Assignment_1.Controllers
                 Programs = await _studentDbContext.Programs.OrderBy(p => p.SchoolProgramName).ToListAsync(),
                 ActiveStudent = new Student()
             };
-            return View(new Student());
+            return View(studentViewModel);
         }
 
 
@@ -54,6 +39,8 @@ namespace Assignment_1.Controllers
         {
             if (ModelState.IsValid) // if input is valid then add student to the database and redirect back to list action
             {
+                studentViewModel.ActiveStudent.GetAge();
+                studentViewModel.ActiveStudent.GetGpaScale();
                 await _studentDbContext.Students.AddAsync(studentViewModel.ActiveStudent);
                 _studentDbContext.SaveChanges();
                 return RedirectToAction("List", "students");

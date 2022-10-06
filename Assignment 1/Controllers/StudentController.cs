@@ -28,7 +28,6 @@ namespace Assignment_1.Controllers
                 Programs = await _studentDbContext.Programs.OrderBy(p => p.SchoolProgramName).ToListAsync(),
                 ActiveStudent = await _studentDbContext.Students.FindAsync(id)
             };
-            //var student = await _studentDbContext.Students.FindAsync(id);
 
             return View(studentViewModel);
         }
@@ -39,15 +38,15 @@ namespace Assignment_1.Controllers
         {
             if (ModelState.IsValid)
             {
-                //studentViewModel.ActiveStudent.GetAge();
-                //studentViewModel.ActiveStudent.GetGPAScale();
+                studentViewModel.ActiveStudent.GetAge();
+                studentViewModel.ActiveStudent.GetGpaScale();
                 _studentDbContext.Students.Update(studentViewModel.ActiveStudent);
                 await _studentDbContext.SaveChangesAsync();
                 return RedirectToAction("List", "Students");
             }
             else
             {
-                //studentViewModel.Programs = await _studentDbContext.Programs.OrderBy(p => p.ProgramName).ToListAsync();
+                studentViewModel.Programs = await _studentDbContext.Programs.OrderBy(p => p.SchoolProgramName).ToListAsync();
                 return View(studentViewModel);
             }
         }
