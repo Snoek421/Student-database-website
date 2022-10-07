@@ -16,7 +16,7 @@ namespace Assignment_1.Entities
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Please choose a date of birth")] //date of birth is required, if not given then error messages show on page
-        [DateIsValid(ErrorMessage = "Date must be valid and before the current day")]
+        [DateIsValid(ErrorMessage = "Date must be valid and before the current day")] //make sure date string is a valid date to prevent crashing
         public string? DateOfBirth { get; set; }//stored as string to simplify interactions with the html page, textbox, and jquery ui datepicker
 
 
