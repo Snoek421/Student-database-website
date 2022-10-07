@@ -35,8 +35,8 @@ namespace Assignment_1.Migrations
                     b.Property<int?>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DateOfBirth")
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
