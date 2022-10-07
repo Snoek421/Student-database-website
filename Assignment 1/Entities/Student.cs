@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices.ObjectiveC;
 
 namespace Assignment_1.Entities
 {
@@ -15,7 +16,9 @@ namespace Assignment_1.Entities
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Please choose a date of birth")] //date of birth is required, if not given then error messages show on page
-        public string? DateOfBirth { get; set; } //stored as string to simplify interactions with the html page, textbox, and jquery ui datepicker
+        [DateIsValid(ErrorMessage = "Date must be valid and before the current day")]
+        public string? DateOfBirth { get; set; }//stored as string to simplify interactions with the html page, textbox, and jquery ui datepicker
+
 
         [Required(ErrorMessage = "Please input a valid GPA")] //gpa is required
         [Range(0.0, 4.0, ErrorMessage = "GPA must be between 0.0 and 4.0")] //if input gpa is not between 0 and 4.0, this error message is shown
@@ -79,4 +82,26 @@ namespace Assignment_1.Entities
         }
     }
 
+    [AttributeUsage(AttributeTargets.Property, Inherited = true)]
+    class DateIsValid : ValidationAttribute
+    {
+        public override bool IsValid (object value)
+        {
+            var dateTimeString = (string)value;
+            if (string.IsNullOrWhiteSpace(dateTimeString))
+            {
+                return true; //means the date is empty, which this does not validate
+            }
+            else
+            {
+                DateTime result;
+                var success = DateTime.TryParse(dateTimeString, out result);
+                if (success && result > DateTime.Today)
+                {
+                    success = false;
+                }
+                return success;
+            }
+        }
+    }
 }
