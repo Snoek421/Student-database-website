@@ -23,7 +23,7 @@ namespace Assignment_1.Entities
                     StudentID = 1,
                     FirstName = "Bart",
                     LastName = "Simpson",
-                    DateOfBirth = new DateTime(1971, 05, 31),
+                    DateOfBirth = "05/31/1971",
                     GPA = 2.7,
                     SchoolProgramID = "CPA",
                 },
@@ -32,7 +32,7 @@ namespace Assignment_1.Entities
                     StudentID = 2,
                     FirstName = "Lisa",
                     LastName = "Simpson",
-                    DateOfBirth = new DateTime(1973, 08, 05),
+                    DateOfBirth = "08/05/1973",
                     GPA = 4.0,
                     SchoolProgramID = "BACS"
                 });

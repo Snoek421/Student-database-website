@@ -15,7 +15,7 @@ namespace Assignment_1.Entities
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Please choose a date of birth")]
-        public DateTime DateOfBirth { get; set; }
+        public string? DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Please input a valid GPA")]
         [Range(0.0, 4.0, ErrorMessage = "GPA must be between 0.0 and 4.0")]
@@ -55,17 +55,7 @@ namespace Assignment_1.Entities
 
         public int? Age
         {
-            get
-            {
-                DateTime today = DateTime.Today;
-                int calculatedAge = today.Year - this.DateOfBirth.Year;
-                if (today.Month < this.DateOfBirth.Month)
-                {
-                    calculatedAge--;
-                }
-                age = calculatedAge;
-                return age;
-            }
+            get { return age; }
             private set { }
         }
 
@@ -102,8 +92,9 @@ namespace Assignment_1.Entities
         public void GetAge()
         {
             DateTime today = DateTime.Today;
-            int calculatedAge = today.Year - this.DateOfBirth.Year;
-            if (today.Month < this.DateOfBirth.Month)
+            DateTime birthDate = DateTime.Parse(this.DateOfBirth);
+            int calculatedAge = today.Year - birthDate.Year;
+            if (today.Month < birthDate.Month)
             {
                 calculatedAge--;
             }

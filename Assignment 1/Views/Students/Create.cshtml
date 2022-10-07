@@ -22,7 +22,7 @@
 			</div>
 			<div class="form-group">
 				<label asp-for="ActiveStudent.DateOfBirth" class="control-label"></label>
-				<input asp-for="ActiveStudent.DateOfBirth" type="text" id="datepicker" class="form-control" />
+				<input asp-for="ActiveStudent.DateOfBirth" type="text" id="datepicker" class="form-control" placeholder="MM/dd/YYYY" />
 			</div>
 			<div class="form-group">
 				<label asp-for="ActiveStudent.GPA" class="control-label"></label>
@@ -50,7 +50,14 @@
 
 
 <script>
-	$(function () {
-		$("#datepicker").datepicker();
-	});
+	$("#datepicker").datepicker({
+		maxDate: "-0",
+		yearRange: "-80:+0",
+		dateFormat: "mm/dd/yy",
+		constrainInput: true,
+		timePicker: false,
+		changeMonth: true,
+		changeYear: true
+	}
+	).datepicker("setDate", new Date());
 </script>

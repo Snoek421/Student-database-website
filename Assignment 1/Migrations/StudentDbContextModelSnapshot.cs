@@ -23,56 +23,56 @@ namespace Assignment_1.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Assignment_1.Entities.Student", b =>
-                {
-                    b.Property<int>("StudentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("StudentID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentID"), 1L, 1);
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentID"), 1L, 1);
 
-                    b.Property<int?>("Age")
-                        .HasColumnType("int");
+                b.Property<int?>("Age")
+                    .HasColumnType("int");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                b.Property<string>("DateOfBirth")
+                    .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("FirstName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("GPA")
-                        .IsRequired()
-                        .HasColumnType("float");
+                b.Property<double?>("GPA")
+                    .IsRequired()
+                    .HasColumnType("float");
 
-                    b.Property<string>("GpaScale")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("GpaScale")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("LastName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("StudentID");
+                b.HasKey("StudentID");
 
-                    b.ToTable("Students");
+                b.ToTable("Students");
 
-                    b.HasData(
-                        new
-                        {
-                            StudentID = 1,
-                            DateOfBirth = new DateTime(1971, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "Bart",
-                            GPA = 2.7000000000000002,
-                            LastName = "Simpson"
-                        },
-                        new
-                        {
-                            StudentID = 2,
-                            DateOfBirth = new DateTime(1973, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "Lisa",
-                            GPA = 4.0,
-                            LastName = "Simpson"
-                        });
-                });
+                b.HasData(
+                    new
+                    {
+                        StudentID = 1,
+                        DateOfBirth = "05/31/1971",
+                        FirstName = "Bart",
+                        GPA = 2.7000000000000002,
+                        LastName = "Simpson"
+                    },
+                    new
+                    {
+                        StudentID = 2,
+                        DateOfBirth = "08/05/1973",
+                        FirstName = "Lisa",
+                        GPA = 4.0,
+                        LastName = "Simpson"
+                    });
+            });
 #pragma warning restore 612, 618
         }
     }
