@@ -5,10 +5,10 @@
 }
 
 <h1>Confirm Deletion</h1>
-<h3>@Model.FirstName @Model.LastName (@Model.Age)</h3>
+<h3>@Model.FirstName @Model.LastName (@Model.Age)</h3> @*display name and age of student selected to be deleted*@
 
  <form asp-controller="Student" asp-action="DeleteConfirmed" method="post">
-    <input type="hidden" asp-for="StudentID" />
+    <input type="hidden" asp-for="StudentID" /> @*hidden student ID to be sent to the delete action on submit button press*@
     <input type="submit" value="Delete" class="btn btn-danger" /> 
     <a asp-controller="Students" asp-action="List" class="btn btn-primary">Cancel</a>
  </form>

@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var Student in Model)
+        @foreach (var Student in Model) @*creates table row for each student in student list from model*@
         {
             <tr>
                 <td>@Student.LastName</td>
@@ -26,11 +26,11 @@
                 <td>@Student.Age</td>
                 <td>@Student.GPA.ToString()</td>
                 <td>@Student.GpaScale</td>
-                <td>@Student.SchoolProgram?.SchoolProgramName</td>
+                <td>@Student.SchoolProgram?.SchoolProgramName</td> @*displays the program name rather than the program ID*@
                 <td>
-                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@Student.StudentID">Edit</a>
+                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@Student.StudentID">Edit</a> @*allows the user to access an edit page for that specific student*@
                     <span class="mx-1">|</span>
-                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@Student.StudentID">Delete</a>
+                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@Student.StudentID">Delete</a> @*allows user to access a delete page for that specific student*@
                 </td>
             </tr>
         }

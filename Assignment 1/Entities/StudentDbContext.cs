@@ -11,14 +11,14 @@ namespace Assignment_1.Entities
         }
 
 
-        public DbSet<Student> Students { get; set; }
-        public DbSet<SchoolProgram> Programs { get; set; }
+        public DbSet<Student> Students { get; set; } //create public entity to manipulate and query Students table in database
+        public DbSet<SchoolProgram> Programs { get; set; } //create public entity to manipulate and query Programs table in database
 
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            modelbuilder.Entity<Student>().HasData(
-                new Student()
+            modelbuilder.Entity<Student>().HasData( 
+                new Student() //seed data for bart
                 {
                     StudentID = 1,
                     FirstName = "Bart",
@@ -27,7 +27,7 @@ namespace Assignment_1.Entities
                     GPA = 2.7,
                     SchoolProgramID = "CPA",
                 },
-                new Student()
+                new Student() //seed data for lisa
                 {
                     StudentID = 2,
                     FirstName = "Lisa",
@@ -37,7 +37,7 @@ namespace Assignment_1.Entities
                     SchoolProgramID = "BACS"
                 });
 
-            modelbuilder.Entity<SchoolProgram>().HasData(
+            modelbuilder.Entity<SchoolProgram>().HasData( //seed data for 4 program codes and their full names
                 new SchoolProgram()
                 {
                     SchoolProgramID = "CP",
