@@ -20,7 +20,7 @@ namespace Assignment_1.Controllers
         [HttpGet("/students")]
         public async Task<IActionResult> List()
         {
-            var allStudents = await _studentDbContext.Students.Include(m => m.SchoolProgram).OrderBy(m => m.FirstName).ToListAsync(); //create list of students and programs to be sent to the list page
+            var allStudents = await _studentDbContext.Students.Include(m => m.SchoolProgram).OrderBy(m => m.LastName).ToListAsync(); //create list of students and programs to be sent to the list page
             return View(allStudents); //send list of students and programs to list page
         }
 
