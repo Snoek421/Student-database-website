@@ -43,8 +43,9 @@ namespace Assignment_1.Controllers
             {
                 studentViewModel.ActiveStudent.GetAge(); //generate student age based on input date of birth
                 studentViewModel.ActiveStudent.GetGpaScale(); //generate gpa scale based on input GPA
-                await _studentDbContext.Students.AddAsync(studentViewModel.ActiveStudent); //add newly created student to the database context
-                _studentDbContext.SaveChanges(); //push updated database context to the database
+                await _studentDbContext.Students.AddAsync(studentViewModel.ActiveStudent); //add newly created student to the students database collection
+                _studentDbContext.SaveChanges(); //push updated database collections to the database
+                TempData["alert"] = "Student Added Successfully.";
                 return RedirectToAction("List", "students"); //return to list page
             }
             else // if it is invalid then just return the create view again

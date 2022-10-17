@@ -4,6 +4,13 @@
     ViewData["Title"] = "All Students";
 }
 <h4><a asp-controller="Students" class="btn btn-primary" asp-action="Create">Add new student</a></h4>
+@if (TempData["alert"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" aria-label="Close" label data-bs-dismiss="alert"></button>
+        <strong>Success!</strong> @TempData["alert"]
+    </div>
+}
 <table class="table table-bordered table-striped">
     <thead>
         <tr>

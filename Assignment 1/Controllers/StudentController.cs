@@ -43,6 +43,7 @@ namespace Assignment_1.Controllers
                 studentViewModel.ActiveStudent.GetGpaScale(); //generate the gpa scale based on the given GPA
                 _studentDbContext.Students.Update(studentViewModel.ActiveStudent); //update the active student in the list of students in the context instance
                 await _studentDbContext.SaveChangesAsync(); //push the updated context instance to the database
+                TempData["alert"] = "Student Edited Successfully.";
                 return RedirectToAction("List", "Students"); //return to the list page
             }
             else
@@ -65,6 +66,7 @@ namespace Assignment_1.Controllers
         {
             _studentDbContext.Students.Remove(student); //remove correct student instance from list of students in context instance
             await _studentDbContext.SaveChangesAsync(); // push the updated context instance to the database
+            TempData["alert"] = "Student Deleted Successfully.";
             return RedirectToAction("List", "Students"); //return to the list page
         }
     }
