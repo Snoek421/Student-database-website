@@ -8,7 +8,7 @@ Requires a local SQL server to work.
 1. Make sure server connection string in appsettings.json points towards your local SQL server (by default the value is `localhost\\SQLEXPRESS`, but it can be changed to fit your server connection)
 2. Open PowerShell terminal in the `Assignment 1` directory, run `dotnet restore`, and then run `dotnet ef database update`. If this fails, make sure that the EF core packages have been installed and restored, and ensure that the entity framework core tools package is installed globally if necessary.
 3. Ensure the command runs successfully and the database is created correctly in your database.
-4. Debug/Run without debugging to open web browser and connect to locally hosted server.
+4. Debug/Run without debugging to open web browser and connect to locally hosted server. Alternatively, run `dotnet run` in the PowerShell terminal from step 2, note the lines saying "Now Listening on: http://localhost:<portNumber>", then navigate to those URLs to test and confirm the website is accessible. This may require having valid Dotnet SDKs installed.
 
 ### Other notes:
 1. Make sure your SQL server or service is running and configured correctly to allow the project's connection.
